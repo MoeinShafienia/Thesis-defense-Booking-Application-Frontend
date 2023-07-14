@@ -1,0 +1,51 @@
+<mat-table [dataSource]="meeting.professors" dir="rtl">
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>شماره دانشجویی</mat-header-cell>
+      <mat-cell *matCellDef="let professor">{{ professor.id }}</mat-cell>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>نام</mat-header-cell>
+      <mat-cell *matCellDef="let professor">{{ professor.name }}</mat-cell>
+    </ng-container>
+  
+    <!-- Age Column -->
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef>سن</mat-header-cell>
+      <mat-cell *matCellDef="let professor">{{ professor.status }}</mat-cell>
+    </ng-container>
+  
+    <!-- Column definitions -->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <button mat-raised-button color="primary" (click)="showAddProfessorPopUp()">Add Professor</button>
+  <button mat-raised-button color="primary" (click)="showAddProfessorPopUp()">Change dates</button>
+
+  <h2>Meeting Details</h2>
+<ul>
+  <li *ngFor="let time of meeting.times">
+    <p>Name: {{ time.name }}</p>
+    <p>Professors: {{ time.professors.join(' - ') }} 
+        <button *ngIf="time.status == 'complete'" mat-icon-button color="primary" (click)="btuh()">
+            <mat-icon>info</mat-icon>
+        </button>
+    </p>
+  </li>
+</ul>
+
+<button mat-raised-button color="primary" *ngIf="userType === 'professor'" (click)="onSave2()">Edit Times</button>
+
+<div *ngIf="editMode === true">
+
+    <div *ngFor="let item of meeting.pureTimes">
+        <label>
+            <input type="checkbox" [checked]="checkedItems.includes(item)" (change)="onCheckboxChange(item)">
+            {{ item }}
+        </label>
+    </div>
+    <button mat-raised-button color="primary" (click)="onSave()">Save</button>
+</div>

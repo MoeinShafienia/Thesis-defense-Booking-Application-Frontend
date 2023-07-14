@@ -1,0 +1,9 @@
+:host {
+    display: block;
+    width: 300px;
+  }
+  
+  .mat-dialog-actions {
+    justify-content: flex-end;
+  }
+  

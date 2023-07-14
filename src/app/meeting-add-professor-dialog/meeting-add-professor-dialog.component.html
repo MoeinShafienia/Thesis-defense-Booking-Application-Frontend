@@ -1,0 +1,11 @@
+<mat-form-field>
+    <mat-label>Select an option</mat-label>
+    <mat-select (selectionChange)="onOptionSelected($event)">
+        <mat-option *ngFor="let option of options" [value]="option">{{ option }}</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<div mat-dialog-actions>
+    <button mat-button color="primary" (click)="closeDialog()">Cancel</button>
+    <button mat-button color="primary" (click)="saveStudentData()">Save</button>
+</div>

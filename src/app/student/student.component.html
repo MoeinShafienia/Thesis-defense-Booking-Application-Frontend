@@ -1,0 +1,39 @@
+
+<mat-table [dataSource]="students" dir="rtl">
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>شماره دانشجویی</mat-header-cell>
+      <mat-cell *matCellDef="let student">{{ student.id }}</mat-cell>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>نام و نام خانوادگی</mat-header-cell>
+      <mat-cell *matCellDef="let student">{{ student.name }}</mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef>ایمیل</mat-header-cell>
+      <mat-cell *matCellDef="let student">{{ student.email }}</mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="phoneNumber">
+      <mat-header-cell *matHeaderCellDef>شماره تماس</mat-header-cell>
+      <mat-cell *matCellDef="let student">{{ student.phoneNumber }}</mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="nationalCode">
+      <mat-header-cell *matHeaderCellDef>کدملی</mat-header-cell>
+      <mat-cell *matCellDef="let student">{{ student.nationalCode }}</mat-cell>
+    </ng-container>
+  
+    <!-- Column definitions -->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <button mat-raised-button color="primary" (click)="openDialog()">Add New Student</button>
+
+  

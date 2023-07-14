@@ -1,0 +1,32 @@
+<mat-table [dataSource]="meetings" dir="rtl">
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let meeting">
+      <button mat-icon-button color="primary" (click)="navigateToMeetingDetail(meeting.age)">
+        <mat-icon>info</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+  <!-- ID Column -->
+  <!-- <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef>شماره دانشجویی</mat-header-cell>
+    <mat-cell *matCellDef="let meeting">{{ meeting.id }}</mat-cell>
+  </ng-container> -->
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="student">
+    <mat-header-cell *matHeaderCellDef>دانشجو</mat-header-cell>
+    <mat-cell *matCellDef="let meeting">{{ meeting.student }}</mat-cell>
+  </ng-container>
+
+  <!-- Age Column -->
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef>توضیحات</mat-header-cell>
+    <mat-cell *matCellDef="let meeting">{{ meeting.description }}</mat-cell>
+  </ng-container>
+
+  <!-- Column definitions -->
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+<button mat-raised-button color="primary" (click)="openDialog()">Add New meeting</button>
